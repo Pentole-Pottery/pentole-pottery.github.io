@@ -1,14 +1,7 @@
 @font-face {
   font-family: "Pitch";
-  src: url("/typography/TestPitch-Regular.otf") format("opentype");
+  src: url("assets/type/Pitch-Regular.woff2") format("woff2");
   font-weight: 400;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Pitch";
-  src: url("/typography/TestPitch-Semibold.otf") format("opentype");
-  font-weight: 500;
   font-style: normal;
 }
 
@@ -25,12 +18,12 @@
 }
 
 body {
-  line-height: 16px;
+  line-height: 20px;
   padding: 1rem;
-  font-family: "Pitch", "Times New Roman", Times, serif;
-  /* font-family: "Times New Roman", Times, serif; */
+  font-family: "Pitch", "Courier New", Courier, monospace;
   font-size: 0.875rem;
   font-weight: 400;
+  font-style: normal;
   /* color: #8d2121; */
   color: var(--invert-primary-color);
   background-color: #fbfafa;
@@ -55,7 +48,7 @@ body {
 }
 
 .logotype {
-  font-weight: 500;
+  line-height: 16px;
   font-size: 1rem;
   /* text-transform: uppercase; */
 }
@@ -70,6 +63,18 @@ body {
 .nav-options {
   display: flex;
   flex-direction: column;
+}
+
+.nav-options a span {
+  opacity: 0;
+}
+
+.nav-options a:hover span {
+  opacity: 1;
+}
+
+.nav-options a.active span {
+  opacity: 1;
 }
 
 /* Center paragraph on desktop */
