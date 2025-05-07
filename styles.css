@@ -187,14 +187,17 @@ body {
 
 @media (max-width: 768px) {
   body {
+    font-size: 12px;
     overflow: auto;
   }
 
   .mobile-wrapper {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    align-items: start;
     height: 100%;
-    gap: 16px;
+    width: 100%;
+    gap: 2rem;
   }
 
   .navbar {
@@ -210,10 +213,14 @@ body {
     width: 100%;
   }
 
+  .logotype {
+    font-size: 0.875rem;
+  }
+
   .center-text {
     position: static;
     transform: translateX(0); /* No translation needed */
-    width: 100%;
+    width: auto;
     align-items: start;
   }
 
