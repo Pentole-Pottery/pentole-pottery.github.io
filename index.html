@@ -19,15 +19,16 @@
     <div class="container" id="container"></div>
 
     <script>
-      // Example for your dynamic page (truly random):
       document.addEventListener("DOMContentLoaded", function () {
-        // Creates a gallery with dynamic random positions
-        new GalleryManager({
-          // seed: null, // null = dynamic random (default)
-        });
+        // Give a small delay to ensure navigation is fully loaded
+        setTimeout(() => {
+          new GalleryManager({
+            // Include both selectors to be safe
+          });
+        }, 100);
       });
     </script>
-    <script src="fetchComponents.js"></script>
+    <script src="fetch-components.js"></script>
     <script src="gallery-manager.js"></script>
   </body>
 </html>

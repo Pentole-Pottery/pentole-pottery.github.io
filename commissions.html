@@ -16,15 +16,16 @@
     <div class="container" id="container"></div>
 
     <script>
-      // Example for a static page with seed 42:
       document.addEventListener("DOMContentLoaded", function () {
-        // Creates a gallery with consistent layout based on seed
-        new GalleryManager({
-          seed: 341, // Change this number for each page to get different layouts
-        });
+        // Give a small delay to ensure navigation is fully loaded
+        setTimeout(() => {
+          new GalleryManager({
+            seed: 341, // Change this number for each page to get different layouts
+          });
+        }, 100);
       });
     </script>
-    <script src="fetchComponents.js"></script>
+    <script src="fetch-components.js"></script>
     <script src="gallery-manager.js"></script>
   </body>
 </html>

@@ -9,10 +9,17 @@ class GalleryManager {
       jsonPath: "/assets/json/galleryImages.json",
       mobileBreakpoint: 768,
       maxSquareSize: 180,
-      squareSpacing: 40,
+      squareSpacing: 40, // Changes the spacing between squares
       seed: null, // null = dynamic random, number = static seeded random
-      avoidElements: [".navbar"], // Elements to avoid overlapping with
+      avoidElements: [
+        "#navigation",
+        ".navbar",
+        "#infoDisplayText",
+        "#commissionsDisplayText",
+        ".center-text",
+      ], // Elements to avoid overlapping with
       elementPadding: 20, // Extra padding around elements to avoid
+      resizeDelay: 300, // Delay before handling resize events
       ...options,
     };
 
@@ -23,6 +30,12 @@ class GalleryManager {
       this.options.seed !== null
         ? new this.SeededRandom(this.options.seed)
         : null;
+    this.resizeTimer = null;
+    this.images = [];
+    this.lastWidth = window.innerWidth;
+
+    // Set up resize event listener
+    this.setupResizeHandler();
 
     // Load images and create gallery
     this.init();
@@ -42,6 +55,44 @@ class GalleryManager {
     }
   };
 
+  setupResizeHandler() {
+    window.addEventListener("resize", () => {
+      // Clear the previous timer
+      clearTimeout(this.resizeTimer);
+
+      // Set a new timer to avoid excessive re-renders during resize
+      this.resizeTimer = setTimeout(() => {
+        const currentWidth = window.innerWidth;
+        const wasMobile = this.isMobile;
+        this.isMobile = currentWidth <= this.options.mobileBreakpoint;
+
+        // Only rebuild if crossing the mobile breakpoint or significant width change
+        if (
+          wasMobile !== this.isMobile ||
+          Math.abs(this.lastWidth - currentWidth) > 150
+        ) {
+          this.lastWidth = currentWidth;
+          this.rebuildGallery();
+        }
+      }, this.options.resizeDelay);
+    });
+  }
+
+  rebuildGallery() {
+    // Clear the existing gallery
+    while (this.container.firstChild) {
+      this.container.removeChild(this.container.firstChild);
+    }
+
+    // Create new gallery with the stored images
+    if (this.images.length > 0) {
+      this.createGallery(this.images);
+    } else {
+      // If images not yet loaded, fetch them again
+      this.init();
+    }
+  }
+
   init() {
     // Fetch images from JSON file
     fetch(this.options.jsonPath)
@@ -53,8 +104,8 @@ class GalleryManager {
       })
       .then((data) => {
         // Assuming the JSON structure has an "images" array
-        const images = data.images || [];
-        this.createGallery(images);
+        this.images = data.images || [];
+        this.createGallery(this.images);
       })
       .catch((error) => {
         console.error(`Error fetching ${this.options.jsonPath}:`, error);

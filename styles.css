@@ -1,3 +1,17 @@
+@font-face {
+  font-family: "Pitch";
+  src: url("/typography/TestPitch-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Pitch";
+  src: url("/typography/TestPitch-Semibold.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+}
+
 :root {
   box-sizing: border-box;
   --primary-color: #1b1a1a;
@@ -11,11 +25,12 @@
 }
 
 body {
-  padding: 1rem;
-  font-family: "Times New Roman", Times, serif;
-  font-size: 16px;
-  font-weight: 400;
   line-height: 16px;
+  padding: 1rem;
+  font-family: "Pitch", "Times New Roman", Times, serif;
+  /* font-family: "Times New Roman", Times, serif; */
+  font-size: 0.875rem;
+  font-weight: 400;
   /* color: #8d2121; */
   color: var(--invert-primary-color);
   background-color: #fbfafa;
@@ -40,7 +55,9 @@ body {
 }
 
 .logotype {
-  font-size: 24px;
+  font-weight: 500;
+  font-size: 1rem;
+  /* text-transform: uppercase; */
 }
 
 .navbar a {
@@ -55,15 +72,6 @@ body {
   flex-direction: column;
 }
 
-.navbar h1 {
-  font-size: 0.9rem;
-  text-align: center;
-}
-
-.nav-options a:hover {
-  text-decoration: underline;
-}
-
 /* Center paragraph on desktop */
 .center-text {
   display: flex;
@@ -75,7 +83,7 @@ body {
   transform: translate(-50%, -50%);
   text-align: inherit;
   z-index: 99; /* Ensure it's above the images */
-  width: 350px; /* Limit the width so it's not too wide */
+  width: 380px; /* Limit the width so it's not too wide */
   max-width: 500px;
   opacity: 0;
   animation: fadeIn 0.8s ease-in-out forwards;
@@ -90,7 +98,7 @@ body {
 
 .square {
   position: absolute;
-  width: auto;
+  width: 100%;
   max-width: 180px;
   max-height: 180px;
   aspect-ratio: 1 / 1;
