@@ -1,5 +1,6 @@
 // Fetches HTML components and injects them into the page. Then sets active nav link based on the current URL.
 
+// Fetching components and rendering them
 const components = {
   navigation: "components/nav-component.html",
   infoDisplayText: "components/info-component.html",
@@ -15,6 +16,15 @@ Promise.all(
     fetch(file)
       .then((res) => res.text())
       .then((html) => {
+        // Check if the element exists before setting innerHTML
+        const element = document.getElementById(id);
+        if (!element) {
+          console.warn(
+            `Element with ID "${id}" not found on this page. Skipping component.`
+          );
+          return; // Skip this component if element doesn't exist
+        }
+
         // If this is the navigation component, modify it to mark the active link
         if (id === "navigation") {
           // Create a temporary div to hold the HTML
@@ -34,7 +44,12 @@ Promise.all(
         }
 
         // Inject the HTML
-        document.getElementById(id).innerHTML = html;
+        element.innerHTML = html;
+      })
+      .catch((error) => {
+        console.error(`Error loading component "${id}" from "${file}":`, error);
       })
   )
-);
+).catch((error) => {
+  console.error("Error loading components:", error);
+});
