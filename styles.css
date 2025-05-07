@@ -1,0 +1,220 @@
+:root {
+  box-sizing: border-box;
+  --primary-color: #1b1a1a;
+  --invert-primary-color: #e4e5e5;
+}
+
+* {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  padding: 1rem;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 16px;
+  /* color: #8d2121; */
+  color: var(--invert-primary-color);
+  background-color: #fbfafa;
+  overflow: hidden;
+}
+
+.invert {
+  mix-blend-mode: difference;
+}
+
+.navbar {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  display: flex;
+  align-items: start;
+  gap: 2rem;
+  width: auto;
+  height: auto;
+  flex-direction: column;
+  z-index: 99;
+}
+
+.logotype {
+  font-size: 24px;
+}
+
+.navbar a {
+  width: fit-content;
+  text-decoration: none;
+  color: inherit;
+  margin-bottom: 0.5rem;
+}
+
+.nav-options {
+  display: flex;
+  flex-direction: column;
+}
+
+.navbar h1 {
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.nav-options a:hover {
+  text-decoration: underline;
+}
+
+/* Center paragraph on desktop */
+.center-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: inherit;
+  z-index: 99; /* Ensure it's above the images */
+  width: 350px; /* Limit the width so it's not too wide */
+  max-width: 500px;
+  opacity: 0;
+  animation: fadeIn 0.8s ease-in-out forwards;
+  animation-delay: 0.8s; /* Delay for the text to fade in */
+}
+
+.container {
+  position: relative;
+  width: calc(100% - 2rem);
+  height: calc(100vh - 2rem);
+}
+
+.square {
+  position: absolute;
+  width: auto;
+  max-width: 180px;
+  max-height: 180px;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+
+  opacity: 0;
+  animation: fadeIn 0.8s ease-in-out forwards;
+}
+
+.square img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Random animation delays */
+.square1 {
+  animation-delay: 0.67s;
+}
+.square2 {
+  animation-delay: 0.32s;
+}
+.square3 {
+  animation-delay: 0.89s;
+}
+.square4 {
+  animation-delay: 0.14s;
+}
+
+.square5 {
+  animation-delay: 0.52s;
+}
+.square6 {
+  animation-delay: 0.78s;
+}
+.square7 {
+  animation-delay: 0.41s;
+}
+.square8 {
+  animation-delay: 0.05s;
+}
+
+.square9 {
+  animation-delay: 0.23s;
+}
+.square10 {
+  animation-delay: 0.61s;
+}
+.square11 {
+  animation-delay: 0.95s;
+}
+.square12 {
+  animation-delay: 0.38s;
+}
+
+.square13 {
+  animation-delay: 0.83s;
+}
+.square14 {
+  animation-delay: 0.19s;
+}
+.square15 {
+  animation-delay: 0.72s;
+}
+.square16 {
+  animation-delay: 0.47s;
+}
+
+@media (max-width: 768px) {
+  body {
+    overflow: auto;
+  }
+
+  .mobile-wrapper {
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+    gap: 16px;
+  }
+
+  .navbar {
+    position: static;
+    top: 1rem;
+    left: 1rem;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    align-items: start;
+    flex-direction: column;
+    z-index: 1;
+    width: 100%;
+  }
+
+  .center-text {
+    position: static;
+    transform: translateX(0); /* No translation needed */
+    width: 100%;
+    align-items: start;
+  }
+
+  .container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    padding: 16px 0rem 0rem;
+    height: auto;
+    width: auto;
+  }
+
+  .square {
+    position: static;
+    max-width: 100%;
+  }
+}

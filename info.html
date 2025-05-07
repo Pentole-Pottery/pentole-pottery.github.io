@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pentole Pottery - Info</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="mobile-wrapper">
+      <div id="navigation"></div>
+
+      <div id="infoDisplayText"></div>
+    </div>
+
+    <div class="container" id="container"></div>
+
+    <script>
+      // Example for another static page with different seed:
+      document.addEventListener("DOMContentLoaded", function () {
+        // Creates a gallery with consistent layout based on seed
+        new GalleryManager({
+          seed: 219, // Different seed = different consistent layout"],
+        });
+      });
+    </script>
+    <script src="fetchComponents.js"></script>
+    <script src="gallery-manager.js"></script>
+  </body>
+</html>
