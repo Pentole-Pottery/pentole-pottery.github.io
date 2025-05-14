@@ -5,6 +5,13 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: "Pitch";
+  src: url("assets/type/Pitch-Medium.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+}
+
 /* WIPE DEFAULT SETTINGS */
 
 * {
@@ -33,25 +40,27 @@ a {
   box-sizing: border-box;
   --primary-color: #1b1a1a;
   --invert-primary-color: #e4e5e5;
+  --background-primary: #fbfafa;
   --nav-link-spacing: 0.188rem; /* 3px */
-  --body-font-size: 0.75rem; /* 12px */
+  --font-size: 0.781rem; /* 12.5px */
+  --font-family: "Pitch", "Monaco", "Courier New", "Courier", monospace;
 }
 
 body {
   line-height: 1rem;
   padding: 1rem;
-  font-family: "Pitch", "Courier New", Courier, monospace;
-  font-size: var(--body-font-size);
+  font-family: var(--font-family);
+  font-size: var(--font-size);
   font-weight: 400;
   font-style: normal;
-  color: var(--invert-primary-color);
-  background-color: #fbfafa;
+  color: var(--primary-color);
+  background-color: var(--background-primary);
   overflow: hidden;
 }
 
-.invert {
+/* .invert {
   mix-blend-mode: difference;
-}
+} */
 
 .navbar {
   position: absolute;
@@ -67,6 +76,7 @@ body {
 }
 
 .logotype {
+  font-weight: 600;
   text-transform: uppercase;
 }
 
