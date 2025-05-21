@@ -9,7 +9,7 @@ class GalleryManager {
       jsonPath: "/assets/json/galleryImages.json",
       mobileBreakpoint: 768,
       maxSquareSize: 180,
-      squareSpacing: 40, // Changes the spacing between squares
+      squareSpacing: 100, // Changes the spacing between squares. Used to be 40
       seed: null, // null = dynamic random, number = static seeded random
       avoidElements: [
         "#navigation",
